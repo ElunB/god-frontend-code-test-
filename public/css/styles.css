@@ -1,0 +1,21 @@
+ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  overflow: hidden;
+}
+.carousel-item {
+}
+
+.visible {
+  flex: 0 0 25%;
+}
+
+.carousel-item .hidden {
+  transform: translateX(100%); /*behövs detta?*/
+  transition: transform 0.3s;
+}
+
+.container {
+  max-width: 1232.4px;
+}

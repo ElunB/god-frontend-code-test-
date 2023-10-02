@@ -4,7 +4,6 @@ import { Container } from "../src/components/Container";
 function Home() {
   return (
     <>
-      <p>hej</p>
       <Container />
     </>
   );
