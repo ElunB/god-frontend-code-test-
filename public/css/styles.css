@@ -5,17 +5,18 @@ ul {
   overflow: hidden;
 }
 .carousel-item {
+  flex: 0 0 25%; /* Fyra bilder i taget */
+  /* transform: translateX(-100%);
+  transition: transform 0.3s ease; */
 }
 
-.visible {
-  flex: 0 0 25%;
-}
+/* .visible {
+} */
 
-.carousel-item .hidden {
-  transform: translateX(100%); /*behövs detta?*/
-  transition: transform 0.3s;
-}
-
-.container {
+/* .hide {
+  /* transform: translateX(-800%);
+  transition: transform 0.3s ease; */
+/* } */
+*/ .container {
   max-width: 1232.4px;
 }

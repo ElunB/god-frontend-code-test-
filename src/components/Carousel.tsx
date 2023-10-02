@@ -43,8 +43,12 @@ export const Carousel = ({ cars }: Props) => {
               className={
                 index < currentNextSlide && index >= currentFirst
                   ? "flex-col p-16 tap-area visible"
-                  : "flex-col p-16 tap-area hidden"
+                  : "flex-col p-16 tap-area"
               }
+              style={{
+                transform: `translate(-${currentFirst * 100}%)`,
+                transition: `transform 0.3s ease`,
+              }}
             >
               <a
                 aria-labelledby="card-heading-v90-recharge"
