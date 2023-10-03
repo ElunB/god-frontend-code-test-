@@ -84,7 +84,7 @@ export const Carousel = ({ cars }: Props) => {
             className="carousel-item text-primary"
             style={{
               transform: `translate(-${currentFirst * 100}%)`,
-              transition: `transform 0.3s ease`,
+              transition: `transform 0.5s ease`,
             }}
           >
             <div
@@ -139,7 +139,7 @@ export const Carousel = ({ cars }: Props) => {
           </li>
         ))}
       </ul>
-      <div className="flex-row self-end gap-8 p-16">
+      <div className="buttonWrapper flex-row self-end gap-8 p-16">
         <IconButton
           aria-label="Close"
           color="neutral"
@@ -156,6 +156,16 @@ export const Carousel = ({ cars }: Props) => {
           variant="outlined"
           aria-disabled={currentNext >= cars.length}
         />
+      </div>
+      <div className="dotList self-center">
+        {cars?.map((car, index) => {
+          return (
+            <div
+              key={car.id}
+              className={index == currentFirst ? "dot dot-filled" : "dot"}
+            ></div>
+          ); // ändra dot-filled
+        })}
       </div>
     </div>
   );
