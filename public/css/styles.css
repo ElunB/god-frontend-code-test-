@@ -2,13 +2,27 @@ ul {
   display: flex;
   list-style-type: none;
   padding: 0;
-  overflow: hidden;
+  width: 100%;
+
+  @media screen and (min-width: 768px) {
+    overflow: hidden;
+  }
 }
 .carousel-item {
-  flex: 0 0 25%; /* Fyra bilder i taget */
+  flex: 0 0 85%;
+  padding: 0 0.5rem;
+  /* Fyra bilder i taget */
   /* transform: translateX(-100%);
   transition: transform 0.3s ease; */
+  @media screen and (min-width: 768px) {
+    flex: 0 0 25%;
+    padding: 0 12px;
+  }
 }
+
+/* .active {
+  transform: translateX(0);
+} */
 
 /* .visible {
 } */
