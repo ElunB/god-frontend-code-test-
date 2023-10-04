@@ -15,27 +15,26 @@ type Props = {
 };
 
 export const Carousel = ({ cars }: Props) => {
-  const [currentNext, setcurrentNext] = useState(1); // Måste vara 1 i mobil
+  const [currentNext, setcurrentNext] = useState(1);
   const [currentFirst, setCurrentFirst] = useState(0);
   const [startX, setStartX] = useState(null);
 
   useEffect(() => {
     const itemsPerSlide = window.innerWidth > 768 ? 4 : 1; // Lägg till fler storlekar
-    console.log("itemsPerSlide", itemsPerSlide);
     setcurrentNext(itemsPerSlide);
   }, []);
 
   const nextCard = () => {
     if (currentNext < cars.length) {
-      setcurrentNext((currentNext) => currentNext + 1); // + 4 max
+      setcurrentNext((currentNext) => currentNext + 1);
       setCurrentFirst((currentFirst) => currentFirst + 1);
     }
   };
 
   const previousCard = () => {
     if (currentFirst > 0) {
-      setcurrentNext((currentNext) => currentNext - 1); // Om det inte är 0
-      setCurrentFirst((currentFirst) => currentFirst - 1); // Om det inte 0
+      setcurrentNext((currentNext) => currentNext - 1);
+      setCurrentFirst((currentFirst) => currentFirst - 1);
     }
   };
 
@@ -72,14 +71,15 @@ export const Carousel = ({ cars }: Props) => {
   };
 
   return (
-    <div className="container flex-col">
+    <div className="container flex-col mt-24">
       <ul
         role="list"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
       >
-        {cars?.map((car, index) => (
+        {cars?.map((car, index: number) => (
           <li
+            role="listitem"
             key={car.id}
             className="carousel-item text-primary"
             style={{
@@ -87,30 +87,21 @@ export const Carousel = ({ cars }: Props) => {
               transition: `transform 0.5s ease`,
             }}
           >
-            <div
-              className={
-                index < currentNext && index >= currentFirst
-                  ? "flex-col tap-area active" // Gör inget just nu
-                  : "flex-col tap-area"
-              }
-            >
+            <div className="flex-col tap-area">
               <a
                 aria-labelledby="card-heading-v90-recharge"
                 className="mb-16 stack-4"
                 data-tap-area-target
-                href="#v90-recharge"
+                href={`learn/${car.id}`}
               >
                 <p className="text-secondary micro font-medium uppercase">
                   {car.bodyType}
                 </p>
-                <h3
-                  className="body-16 text-secondary"
-                  id="card-heading-v90-recharge"
-                >
+                <h3 className="body-16">
                   <span className="font-medium text-primary">
                     {car.modelName}
                   </span>{" "}
-                  Plug-in Hybrid
+                  <span className="text-secondary">{car.modelType}</span>
                 </h3>
                 <img
                   alt="A electric Volvo V90 Recharge standing still on grey floor in a studio." // Vad bör det vara för alt-text?
@@ -121,7 +112,7 @@ export const Carousel = ({ cars }: Props) => {
                 <a
                   aria-labelledby="card-heading-v90-recharge card-action-v90-learn"
                   className="button-text text-accent-blue"
-                  href="#learn"
+                  href={`learn/${car.id}`}
                   id="card-action-v90-learn"
                 >
                   Learn
@@ -129,7 +120,7 @@ export const Carousel = ({ cars }: Props) => {
                 <a
                   aria-labelledby="card-heading-v90-recharge card-action-v90-shop"
                   className="button-text text-accent-blue"
-                  href="#shop"
+                  href={`shop/${car.id}`}
                   id="card-action-v90-shop"
                 >
                   Shop
@@ -139,9 +130,9 @@ export const Carousel = ({ cars }: Props) => {
           </li>
         ))}
       </ul>
-      <div className="buttonWrapper flex-row self-end gap-8 p-16">
+      <div className="buttonWrapper flex-row self-end gap-8 mt-24 mr-16">
         <IconButton
-          aria-label="Close"
+          aria-label="Previous car"
           color="neutral"
           iconName="navigation-chevronback"
           onClick={() => previousCard()}
@@ -149,7 +140,7 @@ export const Carousel = ({ cars }: Props) => {
           aria-disabled={currentFirst == 0}
         />
         <IconButton
-          aria-label="Close"
+          aria-label="Next car"
           color="neutral"
           iconName="navigation-chevronforward"
           onClick={() => nextCard()}
@@ -157,7 +148,7 @@ export const Carousel = ({ cars }: Props) => {
           aria-disabled={currentNext >= cars.length}
         />
       </div>
-      <div className="dotList self-center">
+      <div className="dotList self-center m-24">
         {cars?.map((car, index) => {
           return (
             <div

@@ -1,0 +1,61 @@
+@import "variables";
+
+.container {
+  max-width: 1232.4px;
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+  padding-left: 24px;
+  width: 100%;
+
+  @media screen and (min-width: $breakpoint-large) {
+    overflow: hidden;
+    padding: 0;
+  }
+}
+.carousel-item {
+  flex: 0 0 85%;
+  padding: 0 0.5rem;
+
+  @media screen and (min-width: $breakpoint-small) {
+    flex: 0 0 40%;
+    padding: 0 12px;
+  }
+  @media screen and (min-width: $breakpoint-large) {
+    flex: 0 0 25%;
+  }
+}
+
+.text-secondary {
+  @media screen and (max-width: $breakpoint-large) {
+    display: block;
+  }
+}
+
+.buttonWrapper {
+  @media screen and (max-width: $breakpoint-large) {
+    display: none;
+  }
+}
+
+.dotList {
+  display: flex;
+  @media screen and (min-width: $breakpoint-large) {
+    display: none;
+  }
+}
+
+.dot {
+  height: 8px;
+  width: 8px;
+  background-color: rgb(235, 235, 235);
+  opacity: 1;
+  border-radius: 100%;
+  margin: 0px 4px;
+}
+
+.dot-filled {
+  background-color: black;
+}

@@ -1,4 +1,4 @@
-import "../public/css/styles.css";
+import "../public/css/styles.scss";
 import React, { useEffect, useState } from "react";
 import { Container } from "../src/components/Container";
 import { AppProps } from "next/app.js";
