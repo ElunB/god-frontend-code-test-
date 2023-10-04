@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Container } from "../src/components/Container";
+import { ProductContainer } from "../src/components/ProductContainer";
 
 function Home() {
   return (
     <>
-      <Container />
+      <ProductContainer />
     </>
   );
 }

@@ -1,12 +1,11 @@
 import "../public/css/styles.scss";
 import React, { useEffect, useState } from "react";
-import { Container } from "../src/components/Container";
+import { ProductContainer } from "../src/components/ProductContainer";
 import { AppProps } from "next/app.js";
 
 function App({ Component, pageProps }: AppProps) {
   return (
     <React.StrictMode>
-      {/* renderar index.tsx?*/}
       <Component {...pageProps} />
     </React.StrictMode>
   );

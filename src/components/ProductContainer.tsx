@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { IconButton } from "@volvo-cars/react-icons";
 import { Carousel } from "./Carousel";
 
-type CarData = {
+export type ProductData = {
   id: string;
   modelName: string;
   bodyType: string;
   modelType: string;
   imageUrl: string;
+  alt: string;
 };
 
-export const Container = () => {
-  const [cars, setCars] = useState<CarData[]>([]);
+export const ProductContainer = () => {
+  const [products, setProducts] = useState<ProductData[]>([]);
 
-  //Kolla upp varför man ska göra såhär istället för att fetcha direkt i useeffect
   const fetchData = async () => {
     try {
       const response = await fetch("./api/cars.json", {
@@ -23,7 +22,7 @@ export const Container = () => {
         },
       });
       const data = await response.json();
-      setCars([...data]);
+      setProducts([...data]);
     } catch (e) {
       console.log(e);
     }
@@ -33,7 +32,7 @@ export const Container = () => {
   }, []);
   return (
     <>
-      <Carousel cars={cars} />
+      <Carousel products={products} />
     </>
   );
 };
