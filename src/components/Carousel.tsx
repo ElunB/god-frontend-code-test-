@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { IconButton } from "@volvo-cars/react-icons";
 import { CarouselItem } from "./CarouselItem";
 import { ProductData } from "./ProductContainer";
+import useSwipe from "../hooks/useSwipe";
 
 type Props = {
   products: ProductData[];
@@ -10,7 +11,6 @@ type Props = {
 export const Carousel = ({ products }: Props) => {
   const [currentNext, setcurrentNext] = useState(1);
   const [currentFirst, setCurrentFirst] = useState(0);
-  const [startX, setStartX] = useState(null);
 
   useEffect(() => {
     const itemsPerSlide = window.innerWidth > 768 ? 4 : 1; // Lägg till fler storlekar
@@ -31,31 +31,10 @@ export const Carousel = ({ products }: Props) => {
     }
   };
 
-  const handleTouchStart = (e: any) => {
-    setStartX(e.touches[0].clientX);
-  };
-
-  const handleTouchMove = (e: any) => {
-    // Ändra any
-    if (!startX) return;
-    // hämtar vi den aktuella horisontella positionen för beröringen
-    const currentX = e.touches[0].clientX;
-    //beräknar skillnaden i X-koordinater mellan startpunkten och den aktuella positionen.
-    //Skillnaden representerar hur långt användaren har svept horisontellt från startpunkten.
-    const differenceX = startX - currentX;
-
-    //Avgör om användaren har svept tillräckligt långt åt vänster eller höger för att trigga en navigationsåtgärd.
-    if (differenceX > 3) {
-      // Vad är rätt siffra här?
-      // Vänster svep, gå till nästa bild
-      nextCard();
-    } else if (differenceX < -3) {
-      // Höger svep, gå till föregående bild
-      previousCard();
-    }
-
-    setStartX(null);
-  };
+  const { onTouchStart, onTouchMove } = useSwipe({
+    nextAction: nextCard,
+    previousAction: previousCard,
+  });
 
   return (
     <div className="container flex-col mt-24">
@@ -63,11 +42,7 @@ export const Carousel = ({ products }: Props) => {
         <h3 id="carouselheading" className="visuallyhidden">
           Our car models
         </h3>
-        <ul
-          role="list"
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-        >
+        <ul role="list" onTouchStart={onTouchStart} onTouchMove={onTouchMove}>
           {products?.map((product) => (
             <CarouselItem
               item={product}

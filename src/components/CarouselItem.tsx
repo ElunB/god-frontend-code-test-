@@ -27,7 +27,7 @@ export const CarouselItem = ({ item, currentFirst }: Props) => {
             <span className="font-medium text-primary">{item.modelName}</span>{" "}
             <span className="text-secondary">{item.modelType}</span>
           </h3>
-          <img alt={item.alt} src={item.imageUrl} />
+          <img alt={item.alt} src={item.imageUrl} aria-hidden={true} />
         </a>
         <div className="flex flex-wrap gap-x-24 justify-center">
           <a className="button-text text-accent-blue" href={`learn/${item.id}`}>
