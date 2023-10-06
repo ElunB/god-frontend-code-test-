@@ -13,6 +13,7 @@ ul {
   @media screen and (min-width: $breakpoint-large) {
     overflow: hidden;
     padding: 0;
+    padding-bottom: 1rem;
   }
 }
 .carousel-item {

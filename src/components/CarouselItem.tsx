@@ -2,8 +2,15 @@ import { ProductData } from "./ProductContainer";
 type Props = {
   item: ProductData;
   currentFirst: number;
+  currentNext: number;
+  index: number;
 };
-export const CarouselItem = ({ item, currentFirst }: Props) => {
+export const CarouselItem = ({
+  item,
+  currentFirst,
+  currentNext,
+  index,
+}: Props) => {
   return (
     <li
       role="listitem"
@@ -27,7 +34,7 @@ export const CarouselItem = ({ item, currentFirst }: Props) => {
             <span className="font-medium text-primary">{item.modelName}</span>{" "}
             <span className="text-secondary">{item.modelType}</span>
           </h3>
-          <img alt={item.alt} src={item.imageUrl} aria-hidden={true} />
+          <img alt={item.alt} src={item.imageUrl} />
         </a>
         <div className="flex flex-wrap gap-x-24 justify-center">
           <a className="button-text text-accent-blue" href={`learn/${item.id}`}>
