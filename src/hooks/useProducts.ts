@@ -1,16 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Carousel } from "./Carousel";
+import { useEffect, useState } from "react";
+import { ProductData } from "../../public/types/Product";
 
-export type ProductData = {
-  id: string;
-  modelName: string;
-  bodyType: string;
-  modelType: string;
-  imageUrl: string;
-  alt: string;
-};
-
-export const ProductContainer = () => {
+export default function useProducts() {
   const [products, setProducts] = useState<ProductData[]>([]);
 
   const fetchData = async () => {
@@ -30,9 +21,7 @@ export const ProductContainer = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  return (
-    <>
-      <Carousel products={products} />
-    </>
-  );
-};
+  return {
+    products,
+  };
+}

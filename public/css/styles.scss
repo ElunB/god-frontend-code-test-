@@ -1,4 +1,6 @@
-@import "variables";
+$breakpoint-small: 480px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 1024px;
 
 .container {
   max-width: 1232.4px;

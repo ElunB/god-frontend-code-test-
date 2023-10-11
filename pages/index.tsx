@@ -1,10 +1,13 @@
-import { ProductContainer } from "../src/components/ProductContainer";
+import { Carousel } from "../src/components/Carousel";
+import useProducts from "../src/hooks/useProducts";
 
 function Home() {
+  const { products } = useProducts();
+
   return (
-    <>
-      <ProductContainer />
-    </>
+    <div className="container">
+      <Carousel products={products} />
+    </div>
   );
 }
 

@@ -1,16 +1,9 @@
-import { ProductData } from "./ProductContainer";
+import { ProductData } from "../../public/types/Product";
 type Props = {
   item: ProductData;
   currentFirst: number;
-  currentNext: number;
-  index: number;
 };
-export const CarouselItem = ({
-  item,
-  currentFirst,
-  currentNext,
-  index,
-}: Props) => {
+export const CarouselItem = ({ item, currentFirst }: Props) => {
   return (
     <li
       role="listitem"
