@@ -22,12 +22,8 @@ export default function useSwipe({ nextAction, previousAction }: Props) {
 
     //Avgör om användaren har svept tillräckligt långt åt vänster eller höger för att trigga en navigationsåtgärd.
     if (differenceX > 3) {
-      console.log("vänster");
-      // Vänster svep
       nextAction();
     } else if (differenceX < -3) {
-      console.log("höger");
-      // Höger svep,
       previousAction();
     }
 
